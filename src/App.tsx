@@ -1,22 +1,34 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import DashboardLayout from "@/components/DashboardLayout";
+import OverviewPage from "@/pages/OverviewPage";
+import AgingPage from "@/pages/AgingPage";
+import SupplierPage from "@/pages/SupplierPage";
+import WoodPage from "@/pages/WoodPage";
+import TpecPage from "@/pages/TpecPage";
+import BlockedPage from "@/pages/BlockedPage";
+import VolumetryPage from "@/pages/VolumetryPage";
+import AIAgentPage from "@/pages/AIAgentPage";
+import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route element={<DashboardLayout />}>
+            <Route path="/" element={<OverviewPage />} />
+            <Route path="/aging" element={<AgingPage />} />
+            <Route path="/supplier" element={<SupplierPage />} />
+            <Route path="/wood" element={<WoodPage />} />
+            <Route path="/tpec" element={<TpecPage />} />
+            <Route path="/blocked" element={<BlockedPage />} />
+            <Route path="/volumetry" element={<VolumetryPage />} />
+            <Route path="/ai-agent" element={<AIAgentPage />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
