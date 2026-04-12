@@ -9,7 +9,7 @@ import {
   MapPin, Bell, TrendingUp, TrendingDown, ArrowRight, Bot
 } from "lucide-react";
 import {
-  kpis, stockDistribution, monthlyTrend, alerts,
+  kpis, stockDistribution, alerts,
   formatCurrency, formatNumber
 } from "@/data/mockData";
 
@@ -28,12 +28,6 @@ const kpiCards = [
   { label: "Sem Posição de Estoque", value: formatNumber(kpis.noPositionMaterials), icon: MapPin, trend: "-5.2%", trendUp: true, path: "/wood" },
   { label: "Alertas Críticos", value: String(kpis.criticalAlerts), icon: Bell, trend: "Este mês", trendUp: false, path: "#" },
 ];
-
-const trendData = monthlyTrend.map(d => ({
-  month: d.month,
-  total: d.value / 1_000_000_000,
-  aged: d.aged / 1_000_000_000,
-}));
 
 const pieData = stockDistribution.slice(0, 6).map(d => ({
   name: d.line.length > 20 ? d.line.slice(0, 20) + "…" : d.line,
