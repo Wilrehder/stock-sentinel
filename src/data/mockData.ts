@@ -346,6 +346,7 @@ export const blockedData = {
   blocked: {
     total: 12_847,
     value: 287_000_000,
+    // Por motivo de bloqueio
     byReason: [
       { reason: "Qualidade", items: 4_820, value: 108_000_000 },
       { reason: "Inspeção pendente", items: 3_210, value: 72_000_000 },
@@ -353,30 +354,77 @@ export const blockedData = {
       { reason: "Avaria logística", items: 1_380, value: 31_000_000 },
       { reason: "Decisão gerencial", items: 987, value: 20_000_000 },
     ],
+    // Por linha de estoque
+    byStockLine: [
+      { line: "MRO", items: 4_120, value: 92_000_000, qualidade: 38_000_000, inspecao: 22_000_000, fiscal: 14_000_000, avaria: 10_000_000, gerencial: 8_000_000 },
+      { line: "Papel e Celulose", items: 3_480, value: 78_000_000, qualidade: 32_000_000, inspecao: 18_000_000, fiscal: 15_000_000, avaria: 8_000_000, gerencial: 5_000_000 },
+      { line: "Insumos Químicos", items: 2_210, value: 48_000_000, qualidade: 18_000_000, inspecao: 14_000_000, fiscal: 10_000_000, avaria: 4_000_000, gerencial: 2_000_000 },
+      { line: "Embalagens", items: 1_340, value: 28_000_000, qualidade: 10_000_000, inspecao: 8_000_000, fiscal: 6_000_000, avaria: 3_000_000, gerencial: 1_000_000 },
+      { line: "Combustíveis", items: 890, value: 22_000_000, qualidade: 6_000_000, inspecao: 5_000_000, fiscal: 7_000_000, avaria: 3_000_000, gerencial: 1_000_000 },
+      { line: "Energia", items: 450, value: 12_000_000, qualidade: 3_000_000, inspecao: 4_000_000, fiscal: 2_000_000, avaria: 2_000_000, gerencial: 1_000_000 },
+      { line: "Outros", items: 357, value: 7_000_000, qualidade: 1_000_000, inspecao: 1_000_000, fiscal: 2_000_000, avaria: 1_000_000, gerencial: 2_000_000 },
+    ],
+    // Por unidade
     byUnit: units.slice(0, 6).map((unit, i) => ({
       unit,
       items: [3200, 2800, 2100, 1900, 1500, 1347][i],
       value: [72, 62, 47, 42, 34, 30][i] * 1_000_000,
       avgDays: [89, 112, 67, 98, 78, 102][i],
     })),
+    // Aging dos bloqueados
+    byAging: [
+      { range: "0-30 dias", items: 3_400, value: 68_000_000 },
+      { range: "31-60 dias", items: 2_800, value: 62_000_000 },
+      { range: "61-90 dias", items: 2_200, value: 54_000_000 },
+      { range: "91-180 dias", items: 2_600, value: 58_000_000 },
+      { range: "180+ dias", items: 1_847, value: 45_000_000 },
+    ],
   },
   reversals: {
     total: 6_240,
     value: 134_000_000,
     recurrent: 2_180,
+    // Por tipo de movimento estornado
+    byType: [
+      { type: "Consumo para Ordem", items: 2_480, value: 54_000_000, percent: 39.7 },
+      { type: "Baixa por Sucata", items: 1_120, value: 28_000_000, percent: 17.9 },
+      { type: "Transferência entre Depósitos", items: 980, value: 22_000_000, percent: 15.7 },
+      { type: "Saída para Centro de Custo", items: 720, value: 14_000_000, percent: 11.5 },
+      { type: "Baixa por Inventário", items: 540, value: 9_000_000, percent: 8.7 },
+      { type: "Outros", items: 400, value: 7_000_000, percent: 6.5 },
+    ],
+    // Por linha de estoque
+    byStockLine: [
+      { line: "MRO", items: 2_340, value: 52_000_000 },
+      { line: "Papel e Celulose", items: 1_480, value: 34_000_000 },
+      { line: "Insumos Químicos", items: 1_020, value: 22_000_000 },
+      { line: "Embalagens", items: 680, value: 14_000_000 },
+      { line: "Combustíveis", items: 420, value: 8_000_000 },
+      { line: "Outros", items: 300, value: 4_000_000 },
+    ],
+    // Evolução mensal
     byPeriod: [
-      { month: "Jan", items: 480, value: 10_200_000 },
-      { month: "Fev", items: 520, value: 11_400_000 },
-      { month: "Mar", items: 610, value: 13_100_000 },
-      { month: "Abr", items: 540, value: 11_800_000 },
-      { month: "Mai", items: 490, value: 10_600_000 },
-      { month: "Jun", items: 580, value: 12_500_000 },
-      { month: "Jul", items: 530, value: 11_200_000 },
-      { month: "Ago", items: 620, value: 13_400_000 },
-      { month: "Set", items: 470, value: 10_000_000 },
-      { month: "Out", items: 550, value: 11_900_000 },
-      { month: "Nov", items: 510, value: 11_000_000 },
-      { month: "Dez", items: 340, value: 6_900_000 },
+      { month: "Mar/25", consumo: 320, baixa: 160, value: 10_200_000 },
+      { month: "Abr/25", consumo: 340, baixa: 180, value: 11_400_000 },
+      { month: "Mai/25", consumo: 390, baixa: 220, value: 13_100_000 },
+      { month: "Jun/25", consumo: 350, baixa: 190, value: 11_800_000 },
+      { month: "Jul/25", consumo: 310, baixa: 180, value: 10_600_000 },
+      { month: "Ago/25", consumo: 370, baixa: 210, value: 12_500_000 },
+      { month: "Set/25", consumo: 340, baixa: 190, value: 11_200_000 },
+      { month: "Out/25", consumo: 400, baixa: 220, value: 13_400_000 },
+      { month: "Nov/25", consumo: 290, baixa: 180, value: 10_000_000 },
+      { month: "Dez/25", consumo: 360, baixa: 190, value: 11_900_000 },
+      { month: "Jan/26", consumo: 330, baixa: 180, value: 11_000_000 },
+      { month: "Fev/26", consumo: 220, baixa: 120, value: 6_900_000 },
+    ],
+    // Top materiais recorrentes
+    topRecurrent: [
+      { code: "MRO-3312-BM", desc: "Bucha de Bronze SAE 65", line: "MRO", estornos: 12, value: 1_800_000 },
+      { code: "INS-5521-AC", desc: "Ácido Sulfúrico PA 98%", line: "Insumos Químicos", estornos: 9, value: 1_400_000 },
+      { code: "PAP-2209-BK", desc: "Bobina Kraft 120g Avariada", line: "Papel e Celulose", estornos: 8, value: 2_200_000 },
+      { code: "MRO-7781-FL", desc: "Filtro Hidráulico Parker 25μm", line: "MRO", estornos: 7, value: 980_000 },
+      { code: "EMB-4412-CX", desc: "Caixa Papelão Onda C 60x40", line: "Embalagens", estornos: 6, value: 720_000 },
+      { code: "MRO-1145-RT", desc: "Retentores Viton DN80", line: "MRO", estornos: 6, value: 650_000 },
     ],
   },
 };
