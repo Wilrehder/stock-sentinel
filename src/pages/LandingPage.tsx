@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Send, LayoutDashboard, Bot } from "lucide-react";
+import { Send, LayoutDashboard } from "lucide-react";
+import smartKapitalLogo from "@/assets/smart-kapital-logo.png";
 
 interface Message {
   role: "user" | "assistant";
