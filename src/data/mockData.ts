@@ -346,23 +346,15 @@ export const blockedData = {
   blocked: {
     total: 12_847,
     value: 287_000_000,
-    // Por motivo de bloqueio
-    byReason: [
-      { reason: "Qualidade", items: 4_820, value: 108_000_000 },
-      { reason: "Inspeção pendente", items: 3_210, value: 72_000_000 },
-      { reason: "Divergência fiscal", items: 2_450, value: 56_000_000 },
-      { reason: "Avaria logística", items: 1_380, value: 31_000_000 },
-      { reason: "Decisão gerencial", items: 987, value: 20_000_000 },
-    ],
     // Por linha de estoque
     byStockLine: [
-      { line: "MRO", items: 4_120, value: 92_000_000, qualidade: 38_000_000, inspecao: 22_000_000, fiscal: 14_000_000, avaria: 10_000_000, gerencial: 8_000_000 },
-      { line: "Papel e Celulose", items: 3_480, value: 78_000_000, qualidade: 32_000_000, inspecao: 18_000_000, fiscal: 15_000_000, avaria: 8_000_000, gerencial: 5_000_000 },
-      { line: "Insumos Químicos", items: 2_210, value: 48_000_000, qualidade: 18_000_000, inspecao: 14_000_000, fiscal: 10_000_000, avaria: 4_000_000, gerencial: 2_000_000 },
-      { line: "Embalagens", items: 1_340, value: 28_000_000, qualidade: 10_000_000, inspecao: 8_000_000, fiscal: 6_000_000, avaria: 3_000_000, gerencial: 1_000_000 },
-      { line: "Combustíveis", items: 890, value: 22_000_000, qualidade: 6_000_000, inspecao: 5_000_000, fiscal: 7_000_000, avaria: 3_000_000, gerencial: 1_000_000 },
-      { line: "Energia", items: 450, value: 12_000_000, qualidade: 3_000_000, inspecao: 4_000_000, fiscal: 2_000_000, avaria: 2_000_000, gerencial: 1_000_000 },
-      { line: "Outros", items: 357, value: 7_000_000, qualidade: 1_000_000, inspecao: 1_000_000, fiscal: 2_000_000, avaria: 1_000_000, gerencial: 2_000_000 },
+      { line: "MRO", items: 4_120, value: 92_000_000 },
+      { line: "Papel e Celulose", items: 3_480, value: 78_000_000 },
+      { line: "Insumos Químicos", items: 2_210, value: 48_000_000 },
+      { line: "Embalagens", items: 1_340, value: 28_000_000 },
+      { line: "Combustíveis", items: 890, value: 22_000_000 },
+      { line: "Energia", items: 450, value: 12_000_000 },
+      { line: "Outros", items: 357, value: 7_000_000 },
     ],
     // Por unidade
     byUnit: units.slice(0, 6).map((unit, i) => ({
@@ -386,12 +378,8 @@ export const blockedData = {
     recurrent: 2_180,
     // Por tipo de movimento estornado
     byType: [
-      { type: "Consumo para Ordem", items: 2_480, value: 54_000_000, percent: 39.7 },
-      { type: "Baixa por Sucata", items: 1_120, value: 28_000_000, percent: 17.9 },
-      { type: "Transferência entre Depósitos", items: 980, value: 22_000_000, percent: 15.7 },
-      { type: "Saída para Centro de Custo", items: 720, value: 14_000_000, percent: 11.5 },
-      { type: "Baixa por Inventário", items: 540, value: 9_000_000, percent: 8.7 },
-      { type: "Outros", items: 400, value: 7_000_000, percent: 6.5 },
+      { type: "Estorno de Consumo Ordem", items: 3_740, value: 82_000_000, percent: 61.2 },
+      { type: "Estorno de Baixa CC", items: 2_500, value: 52_000_000, percent: 38.8 },
     ],
     // Por linha de estoque
     byStockLine: [
