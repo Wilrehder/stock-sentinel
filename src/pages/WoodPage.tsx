@@ -157,13 +157,7 @@ function WoodView() {
   );
 }
 
-const UNF_COLORS = [
-  "hsl(213, 70%, 55%)",
-  "hsl(142, 60%, 45%)",
-  "hsl(38, 92%, 50%)",
-  "hsl(0, 72%, 51%)",
-  "hsl(280, 60%, 55%)",
-];
+const UNF_COLORS = CHART_PALETTE.slice(0, 5);
 
 function SeedlingsView() {
   const unfBarQtd = seedlings.byUNF.map(u => ({
