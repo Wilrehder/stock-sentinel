@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { kpis, alerts } from "@/data/mockData";
 
 const menuItems = [
-  { path: "/", label: "Visão Geral", icon: LayoutDashboard },
+  { path: "/dashboard", label: "Visão Geral", icon: LayoutDashboard },
   { path: "/aging", label: "Aging 120+ dias", icon: Clock },
   { path: "/supplier", label: "Materiais no Fornecedor", icon: Truck },
   { path: "/wood", label: "Madeira e Mudas", icon: TreePine },

@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import DashboardLayout from "@/components/DashboardLayout";
+import LandingPage from "@/pages/LandingPage";
 import OverviewPage from "@/pages/OverviewPage";
 import AgingPage from "@/pages/AgingPage";
 import SupplierPage from "@/pages/SupplierPage";
@@ -19,8 +20,9 @@ const App = () => (
     <TooltipProvider>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<LandingPage />} />
           <Route element={<DashboardLayout />}>
-            <Route path="/" element={<OverviewPage />} />
+            <Route path="/dashboard" element={<OverviewPage />} />
             <Route path="/aging" element={<AgingPage />} />
             <Route path="/supplier" element={<SupplierPage />} />
             <Route path="/wood" element={<WoodPage />} />
