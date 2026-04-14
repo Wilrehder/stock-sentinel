@@ -4,7 +4,7 @@ import smartKapitalAiIcon from "@/assets/smart-kapital-ai-icon.png";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard, Clock, Truck, TreePine, AlertTriangle,
-  Lock, BarChart3, ChevronLeft, ChevronRight, Bell, Search
+  Lock, BarChart3, ChevronLeft, ChevronRight, Bell, Search, Home
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { kpis, alerts } from "@/data/mockData";
