@@ -121,23 +121,23 @@ export default function OverviewPage() {
             <AreaChart data={trendData}>
               <defs>
                 <linearGradient id="gradTotal" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(0, 0%, 100%)" stopOpacity={0.2} />
-                  <stop offset="95%" stopColor="hsl(0, 0%, 100%)" stopOpacity={0} />
+                  <stop offset="5%" stopColor={BRAND_BLUE} stopOpacity={0.2} />
+                  <stop offset="95%" stopColor={BRAND_BLUE} stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="gradAged" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(0, 0%, 50%)" stopOpacity={0.2} />
-                  <stop offset="95%" stopColor="hsl(0, 0%, 50%)" stopOpacity={0} />
+                  <stop offset="5%" stopColor={BRAND_DARK_BLUE} stopOpacity={0.2} />
+                  <stop offset="95%" stopColor={BRAND_DARK_BLUE} stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(0, 0%, 16%)" />
-              <XAxis dataKey="month" tick={{ fill: "hsl(0, 0%, 50%)", fontSize: 12 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: "hsl(0, 0%, 50%)", fontSize: 12 }} axisLine={false} tickLine={false} tickFormatter={v => `${v}B`} />
+              <CartesianGrid strokeDasharray="3 3" stroke={GRID_STROKE} />
+              <XAxis dataKey="month" tick={{ fill: AXIS_TICK.fill, fontSize: 12 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: AXIS_TICK.fill, fontSize: 12 }} axisLine={false} tickLine={false} tickFormatter={v => `${v}B`} />
               <Tooltip
                 contentStyle={{ background: "hsl(0, 0%, 10%)", border: "1px solid hsl(0, 0%, 16%)", borderRadius: 8, color: "hsl(0, 0%, 95%)" }}
                 formatter={(v: number) => [`R$ ${v.toFixed(2)} bi`]}
               />
-              <Area type="monotone" dataKey="total" stroke="hsl(0, 0%, 100%)" fill="url(#gradTotal)" strokeWidth={2} name="Total" />
-              <Area type="monotone" dataKey="aged" stroke="hsl(0, 0%, 50%)" fill="url(#gradAged)" strokeWidth={2} name="Parado 120+" />
+              <Area type="monotone" dataKey="total" stroke={BRAND_BLUE} fill="url(#gradTotal)" strokeWidth={2} name="Total" />
+              <Area type="monotone" dataKey="aged" stroke={BRAND_DARK_BLUE} fill="url(#gradAged)" strokeWidth={2} name="Parado 120+" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -224,9 +224,9 @@ export default function OverviewPage() {
         <h3 className="font-semibold text-foreground mb-4">Valor por Linha de Estoque</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={stockDistribution.map(d => ({ ...d, valueBi: d.value / 1_000_000_000 }))} layout="vertical">
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(0, 0%, 16%)" horizontal={false} />
-            <XAxis type="number" tick={{ fill: "hsl(0, 0%, 50%)", fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={v => `${v}B`} />
-            <YAxis type="category" dataKey="line" width={180} tick={{ fill: "hsl(0, 0%, 50%)", fontSize: 11 }} axisLine={false} tickLine={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke={GRID_STROKE} horizontal={false} />
+            <XAxis type="number" tick={{ fill: AXIS_TICK.fill, fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={v => `${v}B`} />
+            <YAxis type="category" dataKey="line" width={180} tick={{ fill: AXIS_TICK.fill, fontSize: 11 }} axisLine={false} tickLine={false} />
             <Tooltip
               contentStyle={{ background: "hsl(0, 0%, 10%)", border: "1px solid hsl(0, 0%, 16%)", borderRadius: 8, color: "hsl(0, 0%, 95%)" }}
               formatter={(v: number) => [`R$ ${v.toFixed(2)} bi`]}

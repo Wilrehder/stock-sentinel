@@ -39,11 +39,11 @@ export default function SupplierPage() {
               name: s.supplier.length > 18 ? s.supplier.slice(0, 18) + "…" : s.supplier,
               valor: s.value / 1_000_000,
             }))} layout="vertical">
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(220, 14%, 18%)" horizontal={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke={GRID_STROKE} horizontal={false} />
               <XAxis type="number" tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis type="category" dataKey="name" width={150} tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 11 }} axisLine={false} tickLine={false} />
               <Tooltip contentStyle={{ background: "hsl(220, 18%, 12%)", border: "1px solid hsl(220, 14%, 18%)", borderRadius: 8, color: "hsl(210, 20%, 95%)" }} formatter={(v: number) => [`R$ ${v.toFixed(0)} mi`]} />
-              <Bar dataKey="valor" fill="hsl(213, 70%, 50%)" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="valor" fill={BRAND_BLUE} radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

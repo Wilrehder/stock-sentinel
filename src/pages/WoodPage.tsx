@@ -93,8 +93,8 @@ function WoodView() {
                 formatter={(v: number, name: string) => [name === "estDispoM3" ? `${v.toFixed(0)} Mi m³` : `R$ ${v.toFixed(0)} Mi`, name === "estDispoM3" ? "Est. Dispo" : "Valor Total"]}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="estDispoM3" name="Est. Dispo (Mi m³)" fill="hsl(213, 70%, 55%)" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="valorMi" name="Valor (R$ Mi)" fill="hsl(213, 70%, 35%)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="estDispoM3" name="Est. Dispo (Mi m³)" fill={BRAND_BLUE} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="valorMi" name="Valor (R$ Mi)" fill={BRAND_DARK_BLUE} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -133,7 +133,7 @@ function WoodView() {
                 contentStyle={{ background: "hsl(0, 0%, 10%)", border: "1px solid hsl(0, 0%, 16%)", borderRadius: 8, color: "hsl(0, 0%, 95%)", fontSize: 11 }}
                 formatter={(v: number) => [`${v.toFixed(2)} Mi m³`]}
               />
-              <Bar dataKey="m3Mi" name="M³ (Mi)" fill="hsl(213, 70%, 55%)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="m3Mi" name="M³ (Mi)" fill={BRAND_BLUE} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -148,7 +148,7 @@ function WoodView() {
                 contentStyle={{ background: "hsl(0, 0%, 10%)", border: "1px solid hsl(0, 0%, 16%)", borderRadius: 8, color: "hsl(0, 0%, 95%)", fontSize: 11 }}
                 formatter={(v: number) => [`R$ ${v.toFixed(1)} Mi`]}
               />
-              <Bar dataKey="valorMi" name="Valor (R$ Mi)" fill="hsl(213, 70%, 55%)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="valorMi" name="Valor (R$ Mi)" fill={BRAND_BLUE} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -231,8 +231,8 @@ function SeedlingsView() {
                 formatter={(v: number, name: string) => [`${v.toFixed(1)} Mil`, name === "qtdTotal" ? "Quantidade Total" : "Acima de 60 dias"]}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="qtdTotal" name="Quantidade Total" fill="hsl(213, 70%, 55%)" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="qtdAcima60d" name="Acima de 60 dias" fill="hsl(213, 70%, 35%)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="qtdTotal" name="Quantidade Total" fill={BRAND_BLUE} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="qtdAcima60d" name="Acima de 60 dias" fill={BRAND_DARK_BLUE} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -248,8 +248,8 @@ function SeedlingsView() {
                 formatter={(v: number, name: string) => [`R$ ${v.toFixed(1)} Mi`, name === "valorTotal" ? "Valor Total" : "Acima de 60 dias"]}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="valorTotal" name="Valor Total" fill="hsl(213, 70%, 55%)" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="valorAcima60d" name="Acima de 60 dias" fill="hsl(213, 70%, 35%)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="valorTotal" name="Valor Total" fill={BRAND_BLUE} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="valorAcima60d" name="Acima de 60 dias" fill={BRAND_DARK_BLUE} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
