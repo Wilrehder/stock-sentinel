@@ -69,7 +69,7 @@ export default function LandingPage() {
         {/* Smart Kapital logo centered */}
         <img src={smartKapitalLogo} alt="Smart Kapital" className="h-44 object-contain mb-6" />
         <h1 className="text-5xl md:text-6xl font-light text-foreground tracking-tight text-center mb-3">
-          Smart Kapital <span className="font-light">IA.</span>
+          Smart Kapital <span className="font-light">AI.</span>
         </h1>
         <p className="text-muted-foreground text-sm md:text-base text-center mb-10">
           Inteligência analítica para gestão de capital de giro e estoque.
