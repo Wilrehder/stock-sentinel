@@ -52,6 +52,11 @@ export default function LandingPage() {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background">
+      {/* SGS logo top-right corner */}
+      <div className="absolute top-6 right-8 z-20">
+        <img src={sgsLogoGreen} alt="SGS Gestão de Inventários" className="h-10 object-contain" />
+      </div>
+
       {/* Pulsing radial background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,_hsl(0_0%_35%)_0%,_transparent_65%)] animate-landing-drift-1 opacity-60" />
@@ -61,11 +66,8 @@ export default function LandingPage() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center w-full max-w-2xl px-6">
-        {/* Title */}
-        <div className="flex items-center -gap-4 mb-8">
-          <img src={smartKapitalLogo} alt="Smart Kapital" className="h-36 object-contain -mr-6" />
-          <img src={sgsLogoGreen} alt="SGS Gestão de Inventários" className="h-36 object-contain" />
-        </div>
+        {/* Smart Kapital logo centered */}
+        <img src={smartKapitalLogo} alt="Smart Kapital" className="h-24 object-contain mb-6" />
         <h1 className="text-5xl md:text-6xl font-light text-foreground tracking-tight text-center mb-3">
           Smart Kapital <span className="font-light">IA.</span>
         </h1>
