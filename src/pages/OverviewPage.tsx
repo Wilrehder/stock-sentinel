@@ -5,8 +5,9 @@ import {
 } from "recharts";
 import {
   DollarSign, Package, Clock, BarChart3, Lock, AlertTriangle,
-  MapPin, Bell, TrendingUp, TrendingDown, ArrowRight, Bot
+  MapPin, Bell, TrendingUp, TrendingDown, ArrowRight
 } from "lucide-react";
+import smartKapitalAiIcon from "@/assets/smart-kapital-ai-icon.png";
 import {
   kpis, stockDistribution, monthlyTrend, alerts,
   formatCurrency, formatNumber
@@ -199,7 +200,7 @@ export default function OverviewPage() {
         <div className="glass-card p-5 glow-blue">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 rounded-lg bg-primary/10">
-              <Bot className="w-5 h-5 text-primary" />
+              <img src={smartKapitalAiIcon} alt="Smart Kapital AI" className="w-5 h-5 object-contain" />
             </div>
             <div>
               <h3 className="font-semibold text-foreground">Agente de IA</h3>
