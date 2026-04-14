@@ -12,12 +12,7 @@ import {
   kpis, stockDistribution, monthlyTrend, alerts,
   formatCurrency, formatNumber
 } from "@/data/mockData";
-
-const COLORS = [
-  "hsl(0, 0%, 100%)", "hsl(0, 0%, 85%)", "hsl(0, 0%, 70%)",
-  "hsl(0, 0%, 60%)", "hsl(0, 0%, 50%)", "hsl(0, 0%, 40%)",
-  "hsl(0, 0%, 75%)", "hsl(0, 0%, 65%)", "hsl(0, 0%, 55%)", "hsl(0, 0%, 45%)"
-];
+import { CHART_PALETTE, TOOLTIP_STYLE as TT, AXIS_TICK, GRID_STROKE, BRAND_BLUE, BRAND_DARK_BLUE } from "@/lib/chartColors";
 
 const kpiCards = [
   { label: "Total de Materiais", value: formatNumber(kpis.totalMaterials), icon: Package, trend: "+1.8%", trendUp: true, path: "/volumetry" },
@@ -126,23 +121,23 @@ export default function OverviewPage() {
             <AreaChart data={trendData}>
               <defs>
                 <linearGradient id="gradTotal" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(0, 0%, 100%)" stopOpacity={0.2} />
-                  <stop offset="95%" stopColor="hsl(0, 0%, 100%)" stopOpacity={0} />
+                  <stop offset="5%" stopColor={BRAND_BLUE} stopOpacity={0.2} />
+                  <stop offset="95%" stopColor={BRAND_BLUE} stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="gradAged" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(0, 0%, 50%)" stopOpacity={0.2} />
-                  <stop offset="95%" stopColor="hsl(0, 0%, 50%)" stopOpacity={0} />
+                  <stop offset="5%" stopColor={BRAND_DARK_BLUE} stopOpacity={0.2} />
+                  <stop offset="95%" stopColor={BRAND_DARK_BLUE} stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(0, 0%, 16%)" />
-              <XAxis dataKey="month" tick={{ fill: "hsl(0, 0%, 50%)", fontSize: 12 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: "hsl(0, 0%, 50%)", fontSize: 12 }} axisLine={false} tickLine={false} tickFormatter={v => `${v}B`} />
+              <CartesianGrid strokeDasharray="3 3" stroke={GRID_STROKE} />
+              <XAxis dataKey="month" tick={{ fill: AXIS_TICK.fill, fontSize: 12 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: AXIS_TICK.fill, fontSize: 12 }} axisLine={false} tickLine={false} tickFormatter={v => `${v}B`} />
               <Tooltip
                 contentStyle={{ background: "hsl(0, 0%, 10%)", border: "1px solid hsl(0, 0%, 16%)", borderRadius: 8, color: "hsl(0, 0%, 95%)" }}
                 formatter={(v: number) => [`R$ ${v.toFixed(2)} bi`]}
               />
-              <Area type="monotone" dataKey="total" stroke="hsl(0, 0%, 100%)" fill="url(#gradTotal)" strokeWidth={2} name="Total" />
-              <Area type="monotone" dataKey="aged" stroke="hsl(0, 0%, 50%)" fill="url(#gradAged)" strokeWidth={2} name="Parado 120+" />
+              <Area type="monotone" dataKey="total" stroke={BRAND_BLUE} fill="url(#gradTotal)" strokeWidth={2} name="Total" />
+              <Area type="monotone" dataKey="aged" stroke={BRAND_DARK_BLUE} fill="url(#gradAged)" strokeWidth={2} name="Parado 120+" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -153,7 +148,7 @@ export default function OverviewPage() {
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>
               <Pie data={pieData} cx="50%" cy="50%" innerRadius={50} outerRadius={80} paddingAngle={2} dataKey="value">
-                {pieData.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}
+                {pieData.map((_, i) => <Cell key={i} fill={CHART_PALETTE[i]} />)}
               </Pie>
               <Tooltip
                 contentStyle={{ background: "hsl(0, 0%, 10%)", border: "1px solid hsl(0, 0%, 16%)", borderRadius: 8, color: "hsl(0, 0%, 95%)" }}
@@ -165,7 +160,7 @@ export default function OverviewPage() {
             {pieData.map((d, i) => (
               <div key={i} className="flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full" style={{ background: COLORS[i] }} />
+                  <div className="w-2 h-2 rounded-full" style={{ background: CHART_PALETTE[i] }} />
                   <span className="text-muted-foreground">{d.name}</span>
                 </div>
                 <span className="text-foreground font-medium">{d.value}%</span>
@@ -229,15 +224,15 @@ export default function OverviewPage() {
         <h3 className="font-semibold text-foreground mb-4">Valor por Linha de Estoque</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={stockDistribution.map(d => ({ ...d, valueBi: d.value / 1_000_000_000 }))} layout="vertical">
-            <CartesianGrid strokeDasharray="3 3" stroke="hsl(0, 0%, 16%)" horizontal={false} />
-            <XAxis type="number" tick={{ fill: "hsl(0, 0%, 50%)", fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={v => `${v}B`} />
-            <YAxis type="category" dataKey="line" width={180} tick={{ fill: "hsl(0, 0%, 50%)", fontSize: 11 }} axisLine={false} tickLine={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke={GRID_STROKE} horizontal={false} />
+            <XAxis type="number" tick={{ fill: AXIS_TICK.fill, fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={v => `${v}B`} />
+            <YAxis type="category" dataKey="line" width={180} tick={{ fill: AXIS_TICK.fill, fontSize: 11 }} axisLine={false} tickLine={false} />
             <Tooltip
               contentStyle={{ background: "hsl(0, 0%, 10%)", border: "1px solid hsl(0, 0%, 16%)", borderRadius: 8, color: "hsl(0, 0%, 95%)" }}
               formatter={(v: number) => [`R$ ${v.toFixed(2)} bi`]}
             />
             <Bar dataKey="valueBi" name="Valor" radius={[0, 4, 4, 0]}>
-              {stockDistribution.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
+              {stockDistribution.map((_, i) => <Cell key={i} fill={CHART_PALETTE[i % CHART_PALETTE.length]} />)}
             </Bar>
           </BarChart>
         </ResponsiveContainer>

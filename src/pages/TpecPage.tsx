@@ -4,6 +4,7 @@ import {
 } from "recharts";
 import { tpecData, formatCurrency } from "@/data/mockData";
 import { TrendingUp, TrendingDown, Lightbulb, AlertCircle } from "lucide-react";
+import { CHART_CRITICAL, BRAND_BLUE, TOOLTIP_STYLE, AXIS_TICK, GRID_STROKE } from "@/lib/chartColors";
 
 function formatKg(v: number) {
   if (v >= 1_000) return `${(v / 1_000).toFixed(0)} mil`;
@@ -26,14 +27,6 @@ function VarBadge({ value, mom, prefix = "" }: { value: number; mom: number; pre
     </p>
   );
 }
-
-const TOOLTIP_STYLE = {
-  background: "hsl(0, 0%, 10%)",
-  border: "1px solid hsl(0, 0%, 16%)",
-  borderRadius: 8,
-  color: "hsl(0, 0%, 95%)",
-  fontSize: 11,
-};
 
 export default function TpecPage() {
   const d = tpecData;
@@ -79,8 +72,8 @@ export default function TpecPage() {
               <YAxis type="category" dataKey="local" width={110} tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 10 }} axisLine={false} tickLine={false} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`${(v / 1_000).toFixed(0)} mil kg`]} />
               <Legend wrapperStyle={{ fontSize: 10 }} />
-              <Bar dataKey="kgForaPrazo" name="Fora do Prazo" stackId="a" fill="hsl(0, 72%, 60%)" />
-              <Bar dataKey="kgNoPrazo" name="No Prazo" stackId="a" fill="hsl(213, 70%, 55%)" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="kgForaPrazo" name="Fora do Prazo" stackId="a" fill={CHART_CRITICAL} />
+              <Bar dataKey="kgNoPrazo" name="No Prazo" stackId="a" fill={BRAND_BLUE} radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -95,8 +88,8 @@ export default function TpecPage() {
               <YAxis tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={v => `${(v / 1_000).toFixed(0)}`} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`${(v / 1_000).toFixed(0)} mil kg`]} />
               <Legend wrapperStyle={{ fontSize: 10 }} />
-              <Bar dataKey="foraPrazo" name="Fora do Prazo" stackId="a" fill="hsl(0, 72%, 60%)" />
-              <Bar dataKey="noPrazo" name="No Prazo" stackId="a" fill="hsl(213, 70%, 55%)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="foraPrazo" name="Fora do Prazo" stackId="a" fill={CHART_CRITICAL} />
+              <Bar dataKey="noPrazo" name="No Prazo" stackId="a" fill={BRAND_BLUE} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -111,8 +104,8 @@ export default function TpecPage() {
               <YAxis tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={v => `R$ ${(v / 1_000).toFixed(0)}`} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`R$ ${(v / 1_000).toFixed(0)} mil`]} />
               <Legend wrapperStyle={{ fontSize: 10 }} />
-              <Bar dataKey="foraPrazo" name="Fora do Prazo" stackId="a" fill="hsl(0, 72%, 60%)" />
-              <Bar dataKey="noPrazo" name="No Prazo" stackId="a" fill="hsl(213, 70%, 55%)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="foraPrazo" name="Fora do Prazo" stackId="a" fill={CHART_CRITICAL} />
+              <Bar dataKey="noPrazo" name="No Prazo" stackId="a" fill={BRAND_BLUE} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -130,8 +123,8 @@ export default function TpecPage() {
               <YAxis type="category" dataKey="local" width={110} tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 10 }} axisLine={false} tickLine={false} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`R$ ${(v / 1_000).toFixed(0)} mil`]} />
               <Legend wrapperStyle={{ fontSize: 10 }} />
-              <Bar dataKey="valorForaPrazo" name="Fora do Prazo" stackId="a" fill="hsl(0, 72%, 60%)" />
-              <Bar dataKey="valorNoPrazo" name="No Prazo" stackId="a" fill="hsl(213, 70%, 55%)" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="valorForaPrazo" name="Fora do Prazo" stackId="a" fill={CHART_CRITICAL} />
+              <Bar dataKey="valorNoPrazo" name="No Prazo" stackId="a" fill={BRAND_BLUE} radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -146,8 +139,8 @@ export default function TpecPage() {
               <YAxis tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={v => `${(v / 1_000).toFixed(0)}`} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`${(v / 1_000).toFixed(0)} mil kg`]} />
               <Legend wrapperStyle={{ fontSize: 10 }} />
-              <Line type="monotone" dataKey="foraPrazo" name="Fora do Prazo" stroke="hsl(0, 72%, 60%)" strokeWidth={2} dot={{ r: 3 }} />
-              <Line type="monotone" dataKey="noPrazo" name="No Prazo" stroke="hsl(213, 70%, 55%)" strokeWidth={2} dot={{ r: 3 }} />
+              <Line type="monotone" dataKey="foraPrazo" name="Fora do Prazo" stroke={CHART_CRITICAL} strokeWidth={2} dot={{ r: 3 }} />
+              <Line type="monotone" dataKey="noPrazo" name="No Prazo" stroke={BRAND_BLUE} strokeWidth={2} dot={{ r: 3 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>

@@ -5,17 +5,10 @@ import {
 } from "recharts";
 import { blockedData, formatCurrency, formatNumber } from "@/data/mockData";
 import { Lock, RotateCcw, Repeat } from "lucide-react";
+import { CHART_PALETTE, CHART_CRITICAL, CHART_WARNING, BRAND_BLUE, BRAND_GOLD, TOOLTIP_STYLE, AXIS_TICK, GRID_STROKE } from "@/lib/chartColors";
 
-const LINE_COLORS = ["hsl(0, 72%, 51%)", "hsl(38, 92%, 50%)", "hsl(213, 70%, 50%)", "hsl(260, 60%, 55%)", "hsl(142, 60%, 45%)", "hsl(190, 70%, 50%)", "hsl(320, 60%, 50%)"];
-const TYPE_COLORS = ["hsl(0, 72%, 51%)", "hsl(38, 92%, 50%)"];
-
-const TOOLTIP_STYLE = {
-  background: "hsl(0, 0%, 10%)",
-  border: "1px solid hsl(0, 0%, 16%)",
-  borderRadius: 8,
-  color: "hsl(0, 0%, 95%)",
-  fontSize: 11,
-};
+const LINE_COLORS = CHART_PALETTE;
+const TYPE_COLORS = [CHART_CRITICAL, BRAND_GOLD];
 
 function BlockedView() {
   const b = blockedData.blocked;
@@ -74,7 +67,7 @@ function BlockedView() {
               <XAxis type="number" tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis type="category" dataKey="unit" width={100} tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 11 }} axisLine={false} tickLine={false} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`R$ ${v.toFixed(0)} mi`]} />
-              <Bar dataKey="valorMi" name="Valor (R$ mi)" fill="hsl(0, 72%, 51%)" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="valorMi" name="Valor (R$ mi)" fill={CHART_CRITICAL} radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -89,7 +82,7 @@ function BlockedView() {
             <XAxis dataKey="line" tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 10 }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 11 }} axisLine={false} tickLine={false} />
             <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`R$ ${v.toFixed(0)} mi`]} />
-            <Bar dataKey="valorMi" name="Valor (R$ mi)" fill="hsl(0, 72%, 55%)" radius={[4, 4, 0, 0]}>
+            <Bar dataKey="valorMi" name="Valor (R$ mi)" fill={CHART_CRITICAL} radius={[4, 4, 0, 0]}>
               {b.byStockLine.map((_, i) => <Cell key={i} fill={LINE_COLORS[i]} />)}
             </Bar>
           </BarChart>
@@ -132,7 +125,7 @@ function BlockedView() {
             <XAxis dataKey="range" tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 10 }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 11 }} axisLine={false} tickLine={false} />
             <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`R$ ${v.toFixed(0)} mi`]} />
-            <Bar dataKey="valorMi" name="Valor (R$ mi)" fill="hsl(0, 72%, 55%)" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="valorMi" name="Valor (R$ mi)" fill={CHART_CRITICAL} radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -208,7 +201,7 @@ function ReversalsView() {
               <XAxis type="number" tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis type="category" dataKey="line" width={120} tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 10 }} axisLine={false} tickLine={false} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`R$ ${v.toFixed(0)} mi`]} />
-              <Bar dataKey="valorMi" name="Valor (R$ mi)" fill="hsl(38, 92%, 50%)" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="valorMi" name="Valor (R$ mi)" fill={BRAND_GOLD} radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -225,8 +218,8 @@ function ReversalsView() {
               <YAxis tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 11 }} axisLine={false} tickLine={false} />
               <Tooltip contentStyle={TOOLTIP_STYLE} />
               <Legend wrapperStyle={{ fontSize: 10 }} />
-              <Bar dataKey="consumo" name="Est. Consumo Ordem" stackId="a" fill="hsl(0, 72%, 55%)" />
-              <Bar dataKey="baixa" name="Est. Baixa CC" stackId="a" fill="hsl(38, 92%, 50%)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="consumo" name="Est. Consumo Ordem" stackId="a" fill={CHART_CRITICAL} />
+              <Bar dataKey="baixa" name="Est. Baixa CC" stackId="a" fill={BRAND_GOLD} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -239,7 +232,7 @@ function ReversalsView() {
               <XAxis dataKey="month" tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 9 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: "hsl(215, 15%, 55%)", fontSize: 11 }} axisLine={false} tickLine={false} />
               <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v: number) => [`R$ ${v.toFixed(1)} mi`]} />
-              <Line type="monotone" dataKey="valorMi" name="Valor (R$ mi)" stroke="hsl(38, 92%, 50%)" strokeWidth={2} dot={{ r: 3 }} />
+              <Line type="monotone" dataKey="valorMi" name="Valor (R$ mi)" stroke={BRAND_GOLD} strokeWidth={2} dot={{ r: 3 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>
