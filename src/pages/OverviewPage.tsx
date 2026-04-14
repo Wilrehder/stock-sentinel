@@ -5,8 +5,9 @@ import {
 } from "recharts";
 import {
   DollarSign, Package, Clock, BarChart3, Lock, AlertTriangle,
-  MapPin, Bell, TrendingUp, TrendingDown, ArrowRight, Bot
+  MapPin, Bell, TrendingUp, TrendingDown, ArrowRight
 } from "lucide-react";
+import smartKapitalAiIcon from "@/assets/smart-kapital-ai-icon.png";
 import {
   kpis, stockDistribution, monthlyTrend, alerts,
   formatCurrency, formatNumber
