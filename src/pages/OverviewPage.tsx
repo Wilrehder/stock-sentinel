@@ -148,7 +148,7 @@ export default function OverviewPage() {
           <ResponsiveContainer width="100%" height={200}>
             <PieChart>
               <Pie data={pieData} cx="50%" cy="50%" innerRadius={50} outerRadius={80} paddingAngle={2} dataKey="value">
-                {pieData.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}
+                {pieData.map((_, i) => <Cell key={i} fill={CHART_PALETTE[i]} />)}
               </Pie>
               <Tooltip
                 contentStyle={{ background: "hsl(0, 0%, 10%)", border: "1px solid hsl(0, 0%, 16%)", borderRadius: 8, color: "hsl(0, 0%, 95%)" }}
@@ -160,7 +160,7 @@ export default function OverviewPage() {
             {pieData.map((d, i) => (
               <div key={i} className="flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full" style={{ background: COLORS[i] }} />
+                  <div className="w-2 h-2 rounded-full" style={{ background: CHART_PALETTE[i] }} />
                   <span className="text-muted-foreground">{d.name}</span>
                 </div>
                 <span className="text-foreground font-medium">{d.value}%</span>
@@ -232,7 +232,7 @@ export default function OverviewPage() {
               formatter={(v: number) => [`R$ ${v.toFixed(2)} bi`]}
             />
             <Bar dataKey="valueBi" name="Valor" radius={[0, 4, 4, 0]}>
-              {stockDistribution.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
+              {stockDistribution.map((_, i) => <Cell key={i} fill={CHART_PALETTE[i % CHART_PALETTE.length]} />)}
             </Bar>
           </BarChart>
         </ResponsiveContainer>
